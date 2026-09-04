@@ -71,8 +71,10 @@ git push -u origin main
 
 ## 4. Le scraper automatique (photos + nouveaux articles)
 
-`vercel.json` déclare déjà une tâche cron Vercel qui appelle `/api/cron/scrape` toutes les
-4 heures. Elle est activée automatiquement dès que le projet est déployé — rien à faire.
+`vercel.json` déclare déjà une tâche cron Vercel qui appelle `/api/cron/scrape` une fois par
+jour (6h du matin UTC). Elle est activée automatiquement dès que le projet est déployé — rien
+à faire. C'est la limite du plan Vercel gratuit (Hobby) : une exécution par jour maximum ; passe
+au plan Pro si tu veux un scraping plus fréquent (toutes les heures par exemple).
 
 Pour la déclencher toi-même et vérifier que tout fonctionne :
 
@@ -124,7 +126,7 @@ lib/
 supabase/
   schema.sql                Schéma des tables (à exécuter en premier)
   seed.sql                  Données de départ (à exécuter après le schéma)
-vercel.json                 Déclare le cron du scraper (toutes les 4h)
+vercel.json                 Déclare le cron du scraper (1x/jour, limite du plan Hobby)
 ```
 
 ## Note légale
